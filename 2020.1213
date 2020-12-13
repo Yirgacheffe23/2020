@@ -1,0 +1,20 @@
+#include<stdio.h>
+//判断奇偶
+int main（）
+{
+	int num = 0;
+	scanf_s（“％d”，＆num）;
+	//如果（num = 0）;
+	// {
+	// printf（“为偶数”，num）;
+	//}
+	如果（num％2 == 0）
+	{
+		printf（“为偶数”，num）;
+	}
+	其他
+	{
+		printf（“为奇数”，num）;
+	}
+	返回0;
+}

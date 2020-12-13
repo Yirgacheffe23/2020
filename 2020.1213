@@ -1,0 +1,74 @@
+#include <stdio.h>
+//判断奇偶
+int main()
+{
+	int num = 0;
+	scanf_s("%d", &num);
+	//if (num = 0);
+	//{
+	//	printf("为偶数", num);
+	//}
+	if (num % 2 == 0)
+	{
+		printf("为偶数", num);
+	}
+	else
+	{
+		printf("为奇数", num);
+	}
+	return 0;
+}
+
+
+//void test()
+//{
+//	int i = 0;
+//	i++;
+//	printf("%d ", i);
+//}
+//int main()
+//{
+//	for (i = 0; i<10; i++)
+//	{
+//		test();
+//	}
+//	return 0;
+//}
+//代码2
+//#include <stdio.h>
+//void test()
+//{
+//	static int i = 0;
+//	i++;
+//	printf("%d ", i);
+//}
+//int main()
+//{
+//	for (i = 0; i<10; i++)
+//	{
+//		test();
+//	}
+//	return 0;
+//}
+//int main()
+//{
+//	int num1 = 0;
+//	int num2 = 0;
+//	int sum = 0;
+//	printf("输入两个操作数:>");
+//	scanf_s("%d %d", &num1, num2);
+//	sum = num1 + num2;
+//	printf("sum = %d\n", sum);
+//	return 0;
+//}
+
+
+//int global = 2019;//全局变量
+//int main()
+//{
+//	int local = 2018;//局部变量
+//	//下面定义的global会不会有问题？
+//	int global = 2020;//局部变量
+//	printf("global = %d\n", global);
+//	return 0;
+//}

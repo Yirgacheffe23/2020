@@ -1,0 +1,53 @@
+#include<stdio.h>
+//考题：设计程序判断大小端
+//1.取第一个字节的内存
+
+//指针
+// 取1的第一个字节的内容 若为00则为低字节，若为01则为高字节
+
+//int check_sys()
+//{
+//	int a = 1;
+//	return *(char*)&a;//(*(char*)&a == 1)int*强制类型转换
+//	//if (*(char*)&a == 1)
+//	//	return 1;
+//	//else
+//	//	return 0;
+//}
+//
+//int main()
+//{
+//	int ret = check_sys();
+//	if (ret == 1)
+//	{
+//		printf("小\n");
+//	}
+//	else
+//	{
+//		printf("大\n");
+//	}
+//	
+//	return 0;
+//}
+
+//2.联合体方法
+int  check_sys()
+{
+	union Un 
+	{
+		int i;//联合体的特点：在使用i或c其中一个时，另一个就不能使用
+		char c;
+	}un;
+	un.i = 1;//把值改为1
+	return un.c;//返回第一字节
+}
+
+
+int main()
+{
+	union Un un = { 0 };
+	/*printf("%d\n", sizeof(un));*/
+	printf("%d\n", &(un.c));
+	printf("%p\n", &(un.i));
+	return 0;
+}

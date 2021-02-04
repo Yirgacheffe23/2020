@@ -1,0 +1,60 @@
+#include<iostream>
+using namespace std;
+
+class book
+{
+public:
+	book()
+	{
+		cout << "book的默认函数调用" << endl;
+	}
+
+	book(int page, double price) :m_page(page), m_price (new double(price))//改为列表方式初始化
+	{
+		//m_page = page;
+		//m_price = new double(price);
+		cout << "book有参构造函数调用" << endl;
+
+	}
+
+	book(const book &b)//
+	{
+		cout << "book拷贝结构函数调用" << endl;
+		m_page = b.m_page;
+		//m_price=b.m_price;//编译器默认实现浅拷贝
+		m_price = new double(*b.m_price);
+	}
+
+	//如果属性有开辟在堆区的，一定要自己提供拷贝构造函数，防止浅拷贝带来的问题
+	~book()//析构函数可以释放堆区中创建的数据
+	{
+		//析构代码，将堆区开辟数据做释放操作
+		if (m_price != 0)
+		{
+			delete m_price;
+			m_price = NULL;
+		}
+		cout << "book析构函数调用" << endl;
+	}
+
+	int m_page;//页数
+	double *m_price;//价格（创建在堆区）
+};
+
+
+void test01()
+{
+	//book b1;//默认构造函数
+	book b1(200, 29.28);
+	cout << "b1的页码为" << b1.m_page << "价格为" << *b1.m_price << endl;
+	book b2(b1);
+	cout << "b2的页码为" << b2.m_page << "价格为" << *b2.m_price << endl;//一开始没有定义拷贝结构函数，是由编译器自动进行浅拷贝
+}
+
+int main()
+{
+
+	test01();
+	system("pause");
+	return 0;
+}

@@ -1,0 +1,37 @@
+
+
+
+#include<iostream>
+using namespace std;
+
+class Person
+{
+public:
+	Person(int age) :m_Age(new int(age))
+	{
+		//m_Age = new int(age);
+	}
+
+	//重载赋值运算符
+	Person& operator=(Person &p)
+	{
+		if (m_Age != NULL)
+		{
+			delete m_Age;
+			m_Age = NULL;
+		}
+		
+	//提供深拷贝
+		m_Age = new int(*p.m_Age);
+		return *this;
+	}
+	int *m_Age;
+};
+
+int main()
+{
+
+	system("pause");
+	return 0;
+}
+

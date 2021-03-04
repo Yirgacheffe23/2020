@@ -1,0 +1,26 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+void test01(){
+	vector<int>v;
+	//向容器中插入数据
+	v.push_back(1);
+	v.push_back(2);
+	v.push_back(3);
+
+	//迭代器
+	vector<int>::iterator pBegin = v.begin();
+	vector<int>::iterator pEnd=v.end();
+
+	//遍历
+	while (pBegin!=pEnd){
+		cout << *pBegin++ << endl;
+	}
+}
+
+int main(){
+	test01();
+	system("pause");
+	return 0;
+}

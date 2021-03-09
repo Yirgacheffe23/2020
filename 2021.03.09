@@ -1,0 +1,43 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+void test01(){
+	string s{ "hello world hello world hello world" };
+	cout << s<<endl;
+	cout << s.length() << endl;
+	cout << s.size() << endl;
+	cout << s.capacity() << endl;
+	cout << "_________" << endl;
+	s.clear();
+	cout << s.size() << endl;
+	cout << s.capacity() << endl;
+	cout << "_____________" << endl;
+
+
+	// 测试reserve是否会改变string中有效元素个数
+	s.reserve(100);
+	cout << s.size() << endl;
+	cout << s.capacity() << endl;
+	// 测试reserve参数小于string的底层空间大小时，是否会将空间缩小
+	s.reserve(50);
+	cout << s.size() << endl;
+	cout << s.capacity() << endl;
+	cout << "_________" << endl;
+
+	string s2(5,'a');
+	cout << s2;
+	cout << s2.size() << endl;
+	cout << s2.capacity() << endl;
+	s2.swap(s);
+	cout << s;
+	cout << s.size() << endl;
+	cout << s.capacity() << endl;
+
+}
+
+int main(){
+	test01();
+	system("pause");
+	return 0;
+}

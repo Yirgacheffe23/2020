@@ -1,0 +1,56 @@
+#include<iostream>
+#include<list>
+#include<string>
+using namespace std;
+
+class Person{
+public:
+	Person(string name, int age, int wight){
+		P_name = name;
+		P_age = age;
+		P_wight = wight;
+	}
+	string P_name;
+	int P_age;
+	int P_wight;
+};
+
+bool ComparePerson(Person &P1, Person &P2){
+	if (P1.P_age == P2.P_age){
+		return P1.P_wight < P2.P_wight;
+	}
+	else{
+		return P1.P_age < P2.P_age;
+	}
+}
+
+void test01(){
+	list<Person> L;
+	Person P1("Henry", 21, 135);
+	Person P2("Han", 21, 160);
+	Person P5("Sherry", 21, 90);
+	Person P3("Tommy", 25, 125);
+	Person P4("Jarry", 24, 120);
+ 
+	L.push_back(P1);
+	L.push_back(P2);
+	L.push_back(P3);
+	L.push_back(P4);
+	L.push_back(P5);
+
+	for (list<Person>::iterator it = L.begin(); it != L.end(); it++){
+		cout << "姓名:"<<(*it).P_name <<"--年龄:"<<(*it).P_age<<"--体重:"<<(*it).P_wight<< endl;
+	}
+
+	cout << "————————排序后————————" << endl;
+	L.sort(ComparePerson);
+	for (list<Person>::iterator it = L.begin(); it != L.end(); it++){
+		cout << "姓名:" << (*it).P_name << "--年龄:" << (*it).P_age << "--体重:" << (*it).P_wight << endl;
+	}
+}
+
+int main(){
+	test01();
+	system("pause");
+	return 0;
+}

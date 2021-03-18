@@ -1,0 +1,55 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+//函数对象在使用时可以像普通函数那样调用，可以有参数和返回值
+class MyAdd{
+public:
+	int operator()(int num1, int num2){
+		return num1 + num2;
+	}
+};
+void test01(){
+	MyAdd myadd1;
+	cout << myadd1(1, 2) << endl;
+}
+
+
+//函数对象内部可以有自己的状态
+class MyPrint{
+public:
+	MyPrint(){
+		count = 0;
+	}
+	void operator()(string test){
+		cout << test << endl;
+		count++;//统计使用次数
+	}
+	int count;//内部自己的状态
+};
+void test02(){
+	MyPrint Myprint2;
+	Myprint2("1Hello");
+	Myprint2("2Hello-");
+	Myprint2("3Hello-");
+	Myprint2("4Hello-");
+	cout << "MYPrint函数的调用次数为：" << Myprint2.count << endl;
+	//cout << "尝试能否在对象外部调用内部函数：" << Myprint.operator()("test") << endl;
+}
+
+//函数对象可以作为参数传递？
+void doPrint(MyPrint &mp, string test){
+	mp(test); }
+void test03(){
+	MyPrint myprint3;
+	doPrint(myprint3,"3test");
+	cout << "3MYPrint函数的调用次数为：" << myprint3.count << endl;
+}
+
+int main(){
+	//test01();
+	test02();
+	test03();
+	system("pause");
+	return 0;
+}

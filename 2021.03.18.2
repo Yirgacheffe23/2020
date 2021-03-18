@@ -1,0 +1,33 @@
+class Solution {
+public:
+    string replaceSpace(string s) {
+        int CountSpace = 0;
+        int OldSize = s.size();
+        for(int i=0;i<s.size();i++)
+        {
+            if(' '==s[i])
+            {
+                CountSpace++;
+            }
+        }
+
+        s.resize(s.size()+CountSpace*2);
+        int NewSize=s.size();
+        for(int i=NewSize-1,j=OldSize-1;j<i;j--,i--)
+        {
+            if(' '!=s[j])
+            {
+                s[i]=s[j];
+            }
+            else
+            {
+                s[i]='0';
+                s[i-1]='2';
+                s[i-2]='%';
+                i-=2;
+            }
+        }
+        return s;
+
+    }
+};

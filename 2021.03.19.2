@@ -1,0 +1,44 @@
+#include<iostream>
+using namespace std;
+
+int test01(int n)
+{
+	int count = 0;
+	while (n)
+	{
+		if (n & 1)
+			count++;
+
+		n = n >> 1;
+	}
+	return count;
+}
+
+int test02(int n)
+{
+	int count = 0;
+	while (n)
+	{
+		count++;
+		n = n&n - 1;
+	}
+	return count;
+}
+
+int main()
+{
+	for (int i = 0; i < 13; i++)
+	{
+		cout << "Num of 1 in "<< i <<" : "<< test01(i) << endl;
+	}
+	cout << "————————————————"<<endl;
+
+	for (int j = 0; j < 13; j++)
+	{
+		cout << "Num of 1 in " << j << " : " << test02(j) << endl;
+	}
+	cout << "————————————————";
+
+	system("pause");
+	return 0;
+}

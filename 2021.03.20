@@ -1,0 +1,11 @@
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        unordered_map<int, int> ump;
+        for (int num : nums)
+            ump[num]++;
+        for (auto [k, v] : ump) 
+            if (v == 1) return k;
+        return 0;
+    }
+};

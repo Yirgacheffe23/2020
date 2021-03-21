@@ -1,0 +1,29 @@
+class Solution {
+public:
+    vector<vector<int>> findContinuousSequence(int target) {
+        int l = 1, r = 1, sum = 0;
+        vector<vector<int>> ret;
+        while(l <= target/2)
+        {
+            if(sum<target){
+                sum += r;
+                r++;
+            }
+            else if(sum>target){
+                sum -= l;
+                l++;
+            }
+            else 
+            {
+                vector<int> arr;
+                for(int k = l; k < r; k++){
+                    arr.push_back(k);
+                }
+                ret.push_back(arr);
+                sum -= l;
+                l++;
+            }
+        }
+        return ret;
+    }
+};

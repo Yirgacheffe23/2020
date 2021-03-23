@@ -1,0 +1,62 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+class Solution {
+public:
+	string reverseWords(string s) {
+		// 一开始就直接做一次翻转
+		//string::iterator it = s.begin();
+		//cout << *it << endl;//s.begin()=s[0]
+
+		reverse(s.begin(), s.end());
+
+		int n = s.size();
+		// 当前遍历的位置
+		int i = 0;
+		// 实际字符的位置
+		int l = 0;
+		while (i < s.size())
+		{
+			// 忽略空格
+			if (s[i] != ' ')
+			{
+				// cout << "s[" << i << "] " << s[i] << " l " << l << endl;
+				// 如果是第一个单词无需加空格，如果是第二个或后续的单词，则额外附加一个空格
+				if (l != 0)
+				{
+					s[l] = ' ';
+					++l;
+				}
+				// 遍历当前的单词直到遇到空格
+				// 临时保存当前l的起点来用于后续翻转使用
+				int prevL = l;//L
+				while (i < n && s[i] != ' ')
+				{
+					s[l] = s[i];
+					++l;
+					++i;
+				}
+				reverse(s.begin() + prevL, s.begin() + l);
+			}
+			else
+			{
+				++i;//跳过空格（任意个）指向下一个单词，然后空格由if（l！= ' ')函数补上
+			}
+		}
+
+		// 清除后续被忽略的内容
+		// cout << l << " " << n << " " << s << endl;
+		s.erase(s.begin() + l, s.end());
+		return s;
+	}
+};
+
+int main()
+{
+	Solution s1;
+	cout << s1.reverseWords("I am a   student.");
+	system("pause");
+	return 0;
+}
+

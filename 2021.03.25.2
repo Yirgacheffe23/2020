@@ -1,0 +1,33 @@
+class Solution {
+public:
+    ListNode* getKthFromEnd(ListNode* head, int k) {
+    ListNode *fast=head;
+    ListNode *slow=head;
+    while(fast->next!=NULL){ 
+
+        if(k>0){
+            k--;
+            fast=fast->next;
+        }
+        slow=slow->next;
+    }
+    return slow;
+    }
+};
+
+};
+
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        ListNode* cur = NULL, *pre = head;
+        while (pre != NULL) {
+            ListNode* t = pre->next;
+            pre->next = cur;
+            cur = pre;
+            pre = t;
+        }
+        return cur;
+    }
+};
+

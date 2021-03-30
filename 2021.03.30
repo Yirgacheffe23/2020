@@ -1,0 +1,32 @@
+class Solution {
+private:
+    // 找到>=target的左边界，就是满足 nums[i] >= target里的i的最小值
+    inline int BinaryLeft(vector<int>& nums, int target)
+    {
+        int l = 0;
+        int r = nums.size() -1 ;
+        int m = 0;
+        while (l <= r)
+        {
+            m = (l+r) >> 1;
+            if (nums[m] < target)
+            {
+                l = m + 1;
+            }
+            else
+            {
+                r = m - 1;
+            }
+        }
+        // cout << target << " " << l << endl;
+        return l;
+    }
+
+public:
+    int search(vector<int>& nums, int target) {
+        // 题目假设存在target，无法额外判断
+        // 二分查找都是left边界，等于是前开后闭，这里计算窗口无需额外减1
+        return BinaryLeft(nums, target+1) - BinaryLeft(nums, target);
+    }
+};
+
